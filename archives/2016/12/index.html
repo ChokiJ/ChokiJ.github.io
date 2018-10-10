@@ -1,253 +1,1662 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+<html lang="Chinese">
+    <!-- title -->
 
-  
-  <title>Archives: 2016/12 | Ch&#39;s</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Choki&apos;s Blog">
-<meta name="keywords" content="Choki">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ch&#39;s">
-<meta property="og:url" content="http://yoursite.com/archives/2016/12/index.html">
-<meta property="og:site_name" content="Ch&#39;s">
-<meta property="og:description" content="Choki&apos;s Blog">
-<meta property="og:locale" content="Chinese">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ch&#39;s">
-<meta name="twitter:description" content="Choki&apos;s Blog">
-  
-    <link rel="alternate" href="/atom.xml" title="Ch&#39;s" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+
+
+<!-- keywords -->
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" >
+    <meta name="author" content="Choki Redfield">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Choki Redfield">
+    
+    <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    
+    <meta name="description" content="Choki's Blog">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>fi3ework&#39;s Studio</title>
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .back-top,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+</style>
+
+    <link rel="preload" href= "/css/style.css?v=20180824" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <link rel="stylesheet" href= "/css/mobile.css?v=20180824" media="(max-width: 980px)">
+    
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+(function( w ){
+	"use strict";
+	// rel=preload support test
+	if( !w.loadCSS ){
+		w.loadCSS = function(){};
+	}
+	// define on the loadCSS obj
+	var rp = loadCSS.relpreload = {};
+	// rel=preload feature support test
+	// runs once and returns a function for compat purposes
+	rp.support = (function(){
+		var ret;
+		try {
+			ret = w.document.createElement( "link" ).relList.supports( "preload" );
+		} catch (e) {
+			ret = false;
+		}
+		return function(){
+			return ret;
+		};
+	})();
+
+	// if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+	// then change that media back to its intended value on load
+	rp.bindMediaToggle = function( link ){
+		// remember existing media attr for ultimate state, or default to 'all'
+		var finalMedia = link.media || "all";
+
+		function enableStylesheet(){
+			link.media = finalMedia;
+		}
+
+		// bind load handlers to enable media
+		if( link.addEventListener ){
+			link.addEventListener( "load", enableStylesheet );
+		} else if( link.attachEvent ){
+			link.attachEvent( "onload", enableStylesheet );
+		}
+
+		// Set rel and non-applicable media type to start an async request
+		// note: timeout allows this to happen async to let rendering continue in IE
+		setTimeout(function(){
+			link.rel = "stylesheet";
+			link.media = "only x";
+		});
+		// also enable media after 3 seconds,
+		// which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+		setTimeout( enableStylesheet, 3000 );
+	};
+
+	// loop through link elements in DOM
+	rp.poly = function(){
+		// double check this to prevent external calls from running
+		if( rp.support() ){
+			return;
+		}
+		var links = w.document.getElementsByTagName( "link" );
+		for( var i = 0; i < links.length; i++ ){
+			var link = links[ i ];
+			// qualify links to those with rel=preload and as=style attrs
+			if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+				// prevent rerunning on link
+				link.setAttribute( "data-loadcss", true );
+				// bind listeners to toggle media back
+				rp.bindMediaToggle( link );
+			}
+		}
+	};
+
+	// if unsupported, run the polyfill
+	if( !rp.support() ){
+		// run once at least
+		rp.poly();
+
+		// rerun poly on an interval until onload
+		var run = w.setInterval( rp.poly, 500 );
+		if( w.addEventListener ){
+			w.addEventListener( "load", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		} else if( w.attachEvent ){
+			w.attachEvent( "onload", function(){
+				rp.poly();
+				w.clearInterval( run );
+			} );
+		}
+	}
+
+
+	// commonjs
+	if( typeof exports !== "undefined" ){
+		exports.loadCSS = loadCSS;
+	}
+	else {
+		w.loadCSS = loadCSS;
+	}
+}( typeof global !== "undefined" ? global : this ) );
+</script>
+
+    <link rel="icon" href= "/assets/favicon.ico" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js" as="script" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" as="script" />
+    <link rel="preload" href="/scripts/main.js" as="script" />
+    <link rel="preload" as="font" href="/font/Oswald-Regular.ttf" crossorigin>
+    <link rel="preload" as="font" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" crossorigin>
+    
+    <!-- fancybox -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Ch&#39;s</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">人类、世界以及宇宙的真理</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
+    
+    
+<header class="header">
+
+    <div class="read-progress"></div>
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <a class="home-link" href=/>fi3ework's Studio.</a>
 </header>
-      <div class="outer">
-        <section id="main">
-  
-  
+    <div class="wrapper">
+        <div class="site-intro" style="
+
+
+
+
+
+
+">
+    
+    <!-- 主页  -->
+            
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+    </div>
+</div>
+        <script>
+ 
+  // get user agent
+  var browser = {
+    versions: function () {
+      var u = window.navigator.userAgent;
+      return {
+        userAgent: u,
+        trident: u.indexOf('Trident') > -1, //IE内核
+        presto: u.indexOf('Presto') > -1, //opera内核
+        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+        iPad: u.indexOf('iPad') > -1, //是否为iPad
+        webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+        weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+        uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+      };
+    }()
+  }
+  console.log("userAgent:" + browser.versions.userAgent);
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded');
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+      document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in');
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb(){
+    if (browser.versions.uc) {
+      console.log("UCBrowser");
+      fontLoaded();
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular']
+        },
+        loading: function () {  //所有字体开始加载
+          // console.log('loading');
+        },
+        active: function () {  //所有字体已渲染
+          fontLoaded();
+        },
+        inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout');
+          fontLoaded();
+        },
+        timeout: 5000 // Set the timeout to two seconds
+      });
+    }
+  }
+
+  function asyncErr(){
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (cb) { o.addEventListener('load', function (e) { cb(null, e); }, false); }
+    if (err) { o.addEventListener('error', function (e) { err(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  var asyncLoadWithFallBack = function(arr, success, reject) {
+      var currReject = function(){
+        reject()
+        arr.shift()
+        if(arr.length)
+          async(arr[0], success, currReject)
+        }
+
+      async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack([
+    "https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js", 
+    "https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js",
+    "/lib/webfontloader.min.js"
+  ], asyncCb, asyncErr)
+</script>        
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <div class="container container-unloaded">
+            <main class="main index-page">
     
     
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/12/26/e7-bb-99-e8-87-aa-e5-b7-b1-e7-9a-84-e5-9c-a3-e8-af-9e-e7-a4-bc-e7-89-a9/" >
+            
+                <span>给自己的圣诞礼物</span>
+        </a>
+        <div class="abstract-content">
+            圣诞（双休日）假期的最后一天，明天就要上学了。即便是因为刚买完键盘还在吃土期，今天也花了好多钱，但是没办法嘛，开心就好。
+
+choki.xyz域名首年仅1元（万网）所以想都没想就注册了，以后看情况决定要不要长期使用，反正现在开始跳转了。
+Wallpaper Engine 这个是吃别人安利，的确很不错的壁纸软件，只要18，Sbeam有售。
+给Sbeam钱包充了30软，买了个dota2的风暴之灵播音员和连杀配音（5块）。蓝猫的声音真可爱。另外感谢土豆的提醒，让我去社区市场买，否则要多花好多钱（都怪他，要不我就不买了）。
+老滚ol和巫师3打折幅度很大，我再好好考虑一下要不要入…
+另外还想买一套...
         </div>
-        <div class="archives">
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/12/26</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/26/e7-bb-99-e8-87-aa-e5-b7-b1-e7-9a-84-e5-9c-a3-e8-af-9e-e7-a4-bc-e7-89-a9/" class="archive-article-date">
-  <time datetime="2016-12-26T00:46:50.000Z" itemprop="datePublished">Dec 26</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/26/e7-bb-99-e8-87-aa-e5-b7-b1-e7-9a-84-e5-9c-a3-e8-af-9e-e7-a4-bc-e7-89-a9/">给自己的圣诞礼物</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
+        <a class="post-tag" href="javascript:void(0);" data-tags = "日志">日志</a>
+    
+</div>
+            
+        </div>
+    </article>
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/25/darkarena-alpha-4-2-1-e6-9b-b4-e6-96-b0-ef-bd-9e-e5-9c-a3-e8-af-9e-e5-bf-ab-e4-b9-90-ef-bc-81/" class="archive-article-date">
-  <time datetime="2016-12-24T17:37:55.000Z" itemprop="datePublished">Dec 24</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/25/darkarena-alpha-4-2-1-e6-9b-b4-e6-96-b0-ef-bd-9e-e5-9c-a3-e8-af-9e-e5-bf-ab-e4-b9-90-ef-bc-81/">Darkarena alpha 4.2.1更新～ 圣诞快乐！</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/12/23/e5-85-a8-e7-ab-99https/" class="archive-article-date">
-  <time datetime="2016-12-22T22:50:29.000Z" itemprop="datePublished">Dec 22</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/12/23/e5-85-a8-e7-ab-99https/">全站HTTPS</a>
-    </h1>
-  
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/12/25/darkarena-alpha-4-2-1-e6-9b-b4-e6-96-b0-ef-bd-9e-e5-9c-a3-e8-af-9e-e5-bf-ab-e4-b9-90-ef-bc-81/" >
+            
+                <span>Darkarena alpha 4.2.1更新～ 圣诞快乐！</span>
+        </a>
+        <div class="abstract-content">
+             圣诞快乐，4.2.1带来了许多圣诞节才有的气氛！
+更新内容版本更新到了alpha 4.2.1 (a43b3)
+圣诞节快乐为了庆祝圣诞，莱特和林都穿上了独特的服装！主需要在角色选择画面按下“MERRY CHRISTMAS”按钮即可庆祝圣诞！
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+圣诞莱特，独特的红白搭配，莱特准备好发射他独特的魔法雪球了。
+驯鹿林，像驯鹿一样奔跑，不过可别让角上挂的圣诞彩灯掉下来了！
+全新的飘雪主题画面以及它独特的配色！
 
+多语言系统在4.2.1更新了多语言系统，在主题画面可以进行切换，但是目前游戏内仅有英语和简体中文两种语言可供使用，如果你想帮助翻译，请联系我。
 
-</section>
+主题画面左下角的“ENGLISH”按钮表...
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/12/24</span>
+            </div>
+            <!-- tags  -->
+            
+            <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags = "Darkarena">Darkarena</a>
+    
+</div>
+            
+        </div>
+    </article>
+    
+    
+    
+    
+    
+    
+    <article class="index-post">
+        <a class="abstract-title" href = "/2016/12/23/e5-85-a8-e7-ab-99https/" >
+            
+                <span>全站HTTPS</span>
+        </a>
+        <div class="abstract-content">
+            新的lnmp1.4可以一键部署Let’s Encrypt的HTTPS了，于是就索性弄了个全站的HTTPS。 HTTPS大法好！
+
+        </div>
+        <div class="abstract-post-meta">
+            <!-- date  -->
+            <div class="abstract-date">
+                <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/12/22</span>
+            </div>
+            <!-- tags  -->
+            
+        </div>
+    </article>
+    
+    <!-- paginator  -->
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
         
-          <aside id="sidebar">
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/创作/">创作</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/创作/随想/">随想</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发/">开发</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/杂物/">杂物</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/艾欧泽亚的时光/">艾欧泽亚的时光</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/随想/">随想</a></li></ul>
+        
+            
+                <a href="mailto:12345@qq.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/fi3ework" class="iconfont-archer github" target="_blank" title=github></a>
+            
+        
+    
+        
+            
+                <span class="iconfont-archer wechat" title=wechat>
+                  
+                  <img class="profile-qr" src="/assets/example_qr.png" />
+                </span>
+            
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
     </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C4D/">C4D</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Darkarena/">Darkarena</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Darkarnea/">Darkarnea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LAE/">LAE</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LARL/">LARL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mediawiki/">Mediawiki</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minecraft/">Minecraft</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Parsoid/">Parsoid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Visual-Editor/">Visual Editor</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ff14/">ff14</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/东方辉针城/">东方辉针城</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/以太2/">以太2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/其名为艾欧泽亚幻想/">其名为艾欧泽亚幻想</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/写生/">写生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/回忆/">回忆</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/奇异人生/">奇异人生</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发日记/">开发日记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/弗尔帕斯塔原型/">弗尔帕斯塔原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日志/">日志</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/服务器/">服务器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器人/">机器人</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/绘画/">绘画</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/脑洞/">脑洞</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/艾欧泽亚的时光/">艾欧泽亚的时光</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/艾欧泽亚老黄历/">艾欧泽亚老黄历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莱斯迪亚传说/">莱斯迪亚传说</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/莱斯迪亚浮世绘/">莱斯迪亚浮世绘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通关/">通关</a></li></ul>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
     </div>
-  </div>
-
-
-  
+    <!-- 不蒜子  -->
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/C4D/" style="font-size: 10px;">C4D</a> <a href="/tags/Darkarena/" style="font-size: 18.33px;">Darkarena</a> <a href="/tags/Darkarnea/" style="font-size: 10px;">Darkarnea</a> <a href="/tags/LAE/" style="font-size: 10px;">LAE</a> <a href="/tags/LARL/" style="font-size: 10px;">LARL</a> <a href="/tags/Mediawiki/" style="font-size: 10px;">Mediawiki</a> <a href="/tags/Minecraft/" style="font-size: 16.67px;">Minecraft</a> <a href="/tags/Parsoid/" style="font-size: 10px;">Parsoid</a> <a href="/tags/Visual-Editor/" style="font-size: 10px;">Visual Editor</a> <a href="/tags/ff14/" style="font-size: 20px;">ff14</a> <a href="/tags/东方辉针城/" style="font-size: 10px;">东方辉针城</a> <a href="/tags/以太2/" style="font-size: 10px;">以太2</a> <a href="/tags/其名为艾欧泽亚幻想/" style="font-size: 10px;">其名为艾欧泽亚幻想</a> <a href="/tags/写生/" style="font-size: 10px;">写生</a> <a href="/tags/回忆/" style="font-size: 15px;">回忆</a> <a href="/tags/奇异人生/" style="font-size: 10px;">奇异人生</a> <a href="/tags/开发日记/" style="font-size: 10px;">开发日记</a> <a href="/tags/弗尔帕斯塔原型/" style="font-size: 10px;">弗尔帕斯塔原型</a> <a href="/tags/日志/" style="font-size: 10px;">日志</a> <a href="/tags/服务器/" style="font-size: 10px;">服务器</a> <a href="/tags/机器人/" style="font-size: 10px;">机器人</a> <a href="/tags/绘画/" style="font-size: 13.33px;">绘画</a> <a href="/tags/脑洞/" style="font-size: 10px;">脑洞</a> <a href="/tags/艾欧泽亚的时光/" style="font-size: 10px;">艾欧泽亚的时光</a> <a href="/tags/艾欧泽亚老黄历/" style="font-size: 11.67px;">艾欧泽亚老黄历</a> <a href="/tags/莱斯迪亚传说/" style="font-size: 10px;">莱斯迪亚传说</a> <a href="/tags/莱斯迪亚浮世绘/" style="font-size: 10px;">莱斯迪亚浮世绘</a> <a href="/tags/通关/" style="font-size: 10px;">通关</a>
-    </div>
-  </div>
-
-  
+    <div class="busuanzi-container">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">July 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
+     
+    <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/10/10/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/29/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e8-80-81-e9-bb-84-e5-8e-86/">艾欧泽亚老黄历</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/06/e5-bc-97-e5-b0-94-e5-b8-95-e6-96-af-e5-a1-94-e5-8e-9f-e5-9e-8bcxxx-e5-a4-8d-e8-af-bb-e9-b8-a1/">弗尔帕斯塔原型CXXX-复读鸡</a>
-          </li>
-        
-          <li>
-            <a href="/2018/07/04/lae-e5-bc-80-e5-8f-91-e6-97-a5-e8-ae-b01-e8-89-af-e5-a5-bd-e7-9a-84-e5-bc-80-e5-a7-8b/">LAE开发日记#1~良好的开始</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/03/twenty-seventeen/">Twenty Seventeen</a>
-          </li>
-        
-      </ul>
     </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 Choki Redfield<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+    
 </footer>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    <!-- toc -->
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
+    <div class="back-top iconfont-archer">&#xe639;</div>
+    <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-panel-archives">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 47
+        </div>
+        <!-- search  -->
+        
+    </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/28</span><a class="archive-post-title" href= "/2018/08/29/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e8-80-81-e9-bb-84-e5-8e-86/" >艾欧泽亚老黄历</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/05</span><a class="archive-post-title" href= "/2018/08/06/e5-bc-97-e5-b0-94-e5-b8-95-e6-96-af-e5-a1-94-e5-8e-9f-e5-9e-8bcxxx-e5-a4-8d-e8-af-bb-e9-b8-a1/" >弗尔帕斯塔原型CXXX-复读鸡</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/03</span><a class="archive-post-title" href= "/2018/07/04/lae-e5-bc-80-e5-8f-91-e6-97-a5-e8-ae-b01-e8-89-af-e5-a5-bd-e7-9a-84-e5-bc-80-e5-a7-8b/" >LAE开发日记#1~良好的开始</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/02</span><a class="archive-post-title" href= "/2018/01/03/twenty-seventeen/" >Twenty Seventeen</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href= "/2017/11/18/our-fate-life-is-strange-e4-ba-8c-e5-91-a8-e7-9b-ae-e6-9c-89-e6-84-9f/" >Our Fate ~ Life is Strange 二周目有感</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/23</span><a class="archive-post-title" href= "/2017/08/24/e8-ae-b0-e5-bd-95visual-editor-e4-b8-8eparsoid-e7-9a-84-e5-ae-89-e8-a3-85/" >记录~Visual Editor与Parsoid的安装</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/22</span><a class="archive-post-title" href= "/2017/08/23/e5-a4-aa-e8-a1-8c-e5-b1-b1-e7-9a-84-e9-9b-be-e4-b8-8e-e7-94-bb/" >太行山的雾与画</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/14</span><a class="archive-post-title" href= "/2017/08/15/e4-b8-b4-e6-91-b9-ef-bd-9e-e9-a3-8e-e6-99-af-e7-94-bb/" >临摹～ 风景画</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2017/08/11/electricity/" >Electricity</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/04</span><a class="archive-post-title" href= "/2017/06/04/e8-8e-b1-e6-96-af-e8-bf-aa-e4-ba-9a-e6-b5-ae-e4-b8-96-e7-bb-98-ef-bd-9e-e5-8e-9f-e5-88-9d-e7-9a-84-e4-bf-a1-e4-bb-b0/" >莱斯迪亚浮世绘～原初的信仰</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2017/05/23/e9-9b-a8-e5-a4-9c-e4-b9-8b-e8-a1-8c/" >雨夜之行</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/06</span><a class="archive-post-title" href= "/2017/04/07/e8-ae-be-e5-ae-9a-ef-bd-9e-e9-9b-b7-e9-b3-9e-e8-93-9d-e9-be-99-e3-83-89-e3-83-a9-e3-82-ab-e3-83-ad-e3-83-b3/" >设定～雷鳞蓝龙ドラカロン</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/11</span><a class="archive-post-title" href= "/2017/03/12/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e7-9a-84-e6-97-b6-e5-85-89-e7-83-88-e7-84-b0-e9-ad-94-e6-96-97-e5-a3-ab/" >艾欧泽亚的时光~烈焰魔斗士</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span><a class="archive-post-title" href= "/2017/03/03/pixmicat-e5-8c-bf-e5-90-8d-e7-89-88-e4-bd-bf-e7-94-a8-e8-af-b4-e6-98-8e-e9-a1-bb-e7-9f-a5/" >Pixmicat匿名版使用说明&须知</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/26</span><a class="archive-post-title" href= "/2017/02/27/e5-85-b6-e5-90-8d-e4-b8-ba-e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e5-b9-bb-e6-83-b3-e8-ae-be-e5-ae-9a/" >其名为艾欧泽亚幻想~设定</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/16</span><a class="archive-post-title" href= "/2017/01/17/2016-e5-b9-b4-e5-ba-a6-e5-b7-b2-e8-b4-ad-e6-b8-b8-e6-88-8f-e6-80-bb-e7-bb-93/" >2016年度已购游戏总结</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/25</span><a class="archive-post-title" href= "/2016/12/26/e7-bb-99-e8-87-aa-e5-b7-b1-e7-9a-84-e5-9c-a3-e8-af-9e-e7-a4-bc-e7-89-a9/" >给自己的圣诞礼物</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/24</span><a class="archive-post-title" href= "/2016/12/25/darkarena-alpha-4-2-1-e6-9b-b4-e6-96-b0-ef-bd-9e-e5-9c-a3-e8-af-9e-e5-bf-ab-e4-b9-90-ef-bc-81/" >Darkarena alpha 4.2.1更新～ 圣诞快乐！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/22</span><a class="archive-post-title" href= "/2016/12/23/e5-85-a8-e7-ab-99https/" >全站HTTPS</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span><a class="archive-post-title" href= "/2016/11/12/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e7-9a-84-e6-97-b6-e5-85-89-ef-bd-9e-e7-81-b5-e5-b3-b0/" >艾欧泽亚的时光～灵峰</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/02</span><a class="archive-post-title" href= "/2016/10/03/darkarena-alapha-4-2-e6-9b-b4-e6-96-b0-ef-bd-9e-e5-85-a8-e6-96-b0-e7-9a-84-e6-97-a0-e5-b0-bd-e6-a8-a1-e5-bc-8f-ef-bc-81/" >Darkarena alapha 4.2更新～全新的无尽模式！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2016/09/16/chokij-com-e8-bf-81-e7-a7-bb-e6-88-90-e5-8a-9f/" >chokij.com迁移成功</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/31</span><a class="archive-post-title" href= "/2016/07/31/darkarena-alpha4-1-1a42b2-e6-9b-b4-e6-96-b0/" >Darkarena alpha4.1.2(a42b3)更新</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/30</span><a class="archive-post-title" href= "/2016/07/30/darkarena-alpha4-1-e5-8f-91-e5-b8-83-ef-bc-81/" >Darkarena alpha4.1发布！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/20</span><a class="archive-post-title" href= "/2016/07/21/e7-ba-a2-e8-8e-b2-e7-a5-ad-ef-bc-81/" >红莲祭！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/11</span><a class="archive-post-title" href= "/2016/06/11/will-you-merry-me-yes/" >Will you merry me?....Yes!</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/07</span><a class="archive-post-title" href= "/2016/06/07/larl-e5-bc-80-e5-8f-91-e6-97-a5-e8-ae-b0001alpha1/" >LARL开发日记#001~alpha1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/28</span><a class="archive-post-title" href= "/2016/05/29/darkarena-e5-bc-80-e5-8f-91-e6-97-a5-e8-ae-b0002a41b2/" >Darkarena开发日记#002~a41b2</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/22</span><a class="archive-post-title" href= "/2016/05/23/darkarena-e5-bc-80-e5-8f-91-e6-97-a5-e8-ae-b0001a41b1/" >Darkarena开发日记#001~a41b1</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2016/05/08/e4-b8-9c-e6-96-b9-e8-be-89-e9-92-88-e5-9f-8e-e7-81-b5-e6-a2-a6a-easy-e9-9a-be-e5-ba-a6-e5-88-9d-e9-80-9a-e7-ba-aa-e5-bf-b5/" >东方辉针城灵梦A Easy难度初通纪念</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span><a class="archive-post-title" href= "/2016/05/08/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e8-80-81-e9-bb-84-e5-8e-86-e5-b7-b2-e6-8f-90-e4-ba-a4-e8-87-b3windows-e5-ba-94-e7-94-a8-e5-95-86-e5-ba-97/" >艾欧泽亚老黄历已提交至Windows应用商店</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2016/05/03/ch-e7-9a-84mc-e5-9b-9e-e5-bf-86-e5-bd-95iii/" >CH的MC回忆录III</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/30</span><a class="archive-post-title" href= "/2016/05/01/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e8-80-81-e9-bb-84-e5-8e-86-e6-8f-90-e4-ba-a4windows10-e5-ba-94-e7-94-a8-e5-95-86-e5-ba-97-ef-bc-81/" >艾欧泽亚老黄历提交Windows10应用商店！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/16</span><a class="archive-post-title" href= "/2016/04/17/e8-89-be-e6-ac-a7-e6-b3-bd-e4-ba-9a-e8-80-81-e9-bb-84-e5-8e-86-e5-8f-91-e5-b8-83-ef-bc-81/" >艾欧泽亚老黄历发布！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/11</span><a class="archive-post-title" href= "/2016/04/11/e6-96-b0-e7-9a-84-e5-b7-a5-e4-bd-9c-e5-ae-a4-e5-90-8d-e5-ad-97-ef-bc-81/" >新的工作室名字！</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/03</span><a class="archive-post-title" href= "/2016/04/04/darkarena-alpha-3-0-build2-e5-8f-91-e5-b8-83/" >Darkarena alpha 3.0 build2发布</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/02</span><a class="archive-post-title" href= "/2016/04/02/e8-80-81-e7-89-a9-e4-b8-a4-e6-9e-9a/" >老物两枚</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/26</span><a class="archive-post-title" href= "/2016/03/27/ff14-c2-b7-e6-8d-95-e9-b1-bc-e4-ba-ba/" >FF14·捕鱼人</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/19</span><a class="archive-post-title" href= "/2016/03/19/chs-wiki-e5-8d-87-e7-ba-a7-e8-87-b31-26-e7-89-88-e6-9c-ac/" >Ch's Wiki升级至1.26版本</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/18</span><a class="archive-post-title" href= "/2016/03/19/ff14-c2-b7-e5-ad-a6-e8-80-85-e3-81-ae-e4-b8-8d-e5-b1-88-e4-b8-8d-e6-8c-a0-e4-b9-8b-e7-ad-96/" >FF14·学者の不屈不挠之策</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/13</span><a class="archive-post-title" href= "/2016/03/13/ff14-c2-b7-e5-ad-a6-e8-80-85/" >FF14·学者</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/16</span><a class="archive-post-title" href= "/2016/02/17/ch-e7-9a-84mc-e5-9b-9e-e5-bf-86-e5-bd-95ii/" >CH的MC回忆录II</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2016/02/14/e6-88-91-e7-9a-84-e5-9d-91-e4-bb-ac/" >我的坑们</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/13</span><a class="archive-post-title" href= "/2016/02/13/ch-e7-9a-84mc-e5-9b-9e-e5-bf-86-e5-bd-95i/" >CH的MC回忆录I</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/11</span><a class="archive-post-title" href= "/2016/02/12/c4d-c2-b7-e5-b7-a5-e4-bd-9c/" >C4D · 工作</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> Invalid date </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span><a class="archive-post-title" href= "/2018/10/10/package/" >[Untitled Post]</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">02/09</span><a class="archive-post-title" href= "/2016/02/10/e9-9b-b6-e5-bc-8f-e4-bb-a5-e5-a4-aa-e6-bb-91-e8-a1-8c-e8-80-85-e5-a4-a7-e8-bf-b7-e5-ae-ab-e8-99-90-e5-bf-83-e4-b9-8b-e7-ab-a0-e6-94-bb-e7-95-a5/" >零式以太滑行者大迷宫:虐心之章攻略</a>
+        </li>
+    
+    </div>
   </div>
-</body>
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name" data-tags="ff14"><span class="iconfont-archer">&#xe606;</span>ff14</span>
+    
+        <span class="sidebar-tag-name" data-tags="脑洞"><span class="iconfont-archer">&#xe606;</span>脑洞</span>
+    
+        <span class="sidebar-tag-name" data-tags="C4D"><span class="iconfont-archer">&#xe606;</span>C4D</span>
+    
+        <span class="sidebar-tag-name" data-tags="Minecraft"><span class="iconfont-archer">&#xe606;</span>Minecraft</span>
+    
+        <span class="sidebar-tag-name" data-tags="回忆"><span class="iconfont-archer">&#xe606;</span>回忆</span>
+    
+        <span class="sidebar-tag-name" data-tags="Darkarena"><span class="iconfont-archer">&#xe606;</span>Darkarena</span>
+    
+        <span class="sidebar-tag-name" data-tags="东方辉针城"><span class="iconfont-archer">&#xe606;</span>东方辉针城</span>
+    
+        <span class="sidebar-tag-name" data-tags="通关"><span class="iconfont-archer">&#xe606;</span>通关</span>
+    
+        <span class="sidebar-tag-name" data-tags="绘画"><span class="iconfont-archer">&#xe606;</span>绘画</span>
+    
+        <span class="sidebar-tag-name" data-tags="Darkarnea"><span class="iconfont-archer">&#xe606;</span>Darkarnea</span>
+    
+        <span class="sidebar-tag-name" data-tags="其名为艾欧泽亚幻想"><span class="iconfont-archer">&#xe606;</span>其名为艾欧泽亚幻想</span>
+    
+        <span class="sidebar-tag-name" data-tags="写生"><span class="iconfont-archer">&#xe606;</span>写生</span>
+    
+        <span class="sidebar-tag-name" data-tags="弗尔帕斯塔原型"><span class="iconfont-archer">&#xe606;</span>弗尔帕斯塔原型</span>
+    
+        <span class="sidebar-tag-name" data-tags="机器人"><span class="iconfont-archer">&#xe606;</span>机器人</span>
+    
+        <span class="sidebar-tag-name" data-tags="日志"><span class="iconfont-archer">&#xe606;</span>日志</span>
+    
+        <span class="sidebar-tag-name" data-tags="艾欧泽亚的时光"><span class="iconfont-archer">&#xe606;</span>艾欧泽亚的时光</span>
+    
+        <span class="sidebar-tag-name" data-tags="艾欧泽亚老黄历"><span class="iconfont-archer">&#xe606;</span>艾欧泽亚老黄历</span>
+    
+        <span class="sidebar-tag-name" data-tags="莱斯迪亚浮世绘"><span class="iconfont-archer">&#xe606;</span>莱斯迪亚浮世绘</span>
+    
+        <span class="sidebar-tag-name" data-tags="Mediawiki"><span class="iconfont-archer">&#xe606;</span>Mediawiki</span>
+    
+        <span class="sidebar-tag-name" data-tags="Parsoid"><span class="iconfont-archer">&#xe606;</span>Parsoid</span>
+    
+        <span class="sidebar-tag-name" data-tags="Visual Editor"><span class="iconfont-archer">&#xe606;</span>Visual Editor</span>
+    
+        <span class="sidebar-tag-name" data-tags="服务器"><span class="iconfont-archer">&#xe606;</span>服务器</span>
+    
+        <span class="sidebar-tag-name" data-tags="莱斯迪亚传说"><span class="iconfont-archer">&#xe606;</span>莱斯迪亚传说</span>
+    
+        <span class="sidebar-tag-name" data-tags="以太2"><span class="iconfont-archer">&#xe606;</span>以太2</span>
+    
+        <span class="sidebar-tag-name" data-tags="LAE"><span class="iconfont-archer">&#xe606;</span>LAE</span>
+    
+        <span class="sidebar-tag-name" data-tags="开发日记"><span class="iconfont-archer">&#xe606;</span>开发日记</span>
+    
+        <span class="sidebar-tag-name" data-tags="奇异人生"><span class="iconfont-archer">&#xe606;</span>奇异人生</span>
+    
+        <span class="sidebar-tag-name" data-tags="LARL"><span class="iconfont-archer">&#xe606;</span>LARL</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #787878; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: true
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="杂物"><span class="iconfont-archer">&#xe60a;</span>杂物</span>
+    
+        <span class="sidebar-category-name" data-categories="旅途"><span class="iconfont-archer">&#xe60a;</span>旅途</span>
+    
+        <span class="sidebar-category-name" data-categories="创作"><span class="iconfont-archer">&#xe60a;</span>创作</span>
+    
+        <span class="sidebar-category-name" data-categories="随想"><span class="iconfont-archer">&#xe60a;</span>随想</span>
+    
+        <span class="sidebar-category-name" data-categories="开发"><span class="iconfont-archer">&#xe60a;</span>开发</span>
+    
+        <span class="sidebar-category-name" data-categories="创作/随想"><span class="iconfont-archer">&#xe60a;</span>创作/随想</span>
+    
+        <span class="sidebar-category-name" data-categories="艾欧泽亚的时光"><span class="iconfont-archer">&#xe60a;</span>艾欧泽亚的时光</span>
+    
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var siteMeta = {
+        root: "/",
+        author: "Choki Redfield"
+    }
+</script>
+    <!-- CDN failover -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ === 'undefined')
+        {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js">\x3C/script>')
+        }
+    </script>
+    <script src="/scripts/main.js"></script>
+    <!-- algolia -->
+    
+    <!-- busuanzi  -->
+    
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    <!-- CNZZ  -->
+    
+    </div>
+    <!-- async load share.js -->
+     
+    </body>
 </html>
+
+
